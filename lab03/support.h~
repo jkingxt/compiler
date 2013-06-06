@@ -1,0 +1,43 @@
+typedef struct Operand_* Operand;
+
+struct Operand_ {
+	enum { VARIABLE, CONSTANT, CONSTANT_FLOAT, ADDRESS, REFERENCE, GOTOOP, LABELOP, RETURNOP} kind;
+	union {
+		char ID[20];//这个有待考虑
+		int value;
+		//if操作数
+		//其他
+	} u;
+};
+
+struct ArgList{
+	Operand op;
+	struct ArgList* next;
+};
+
+struct InterCode
+{
+	enum { ASSIGN_, ADD_, SUB_, MUL_, DIV_, MINUS_, IF_, GOTO_, LABEL_, RETURN_, READ_, WRITE_, ARG_, CALL_, DEC_, FUNCTION_, PARAM_, NONE_} kind;
+	union {
+		struct { Operand right, left; } assign;
+		struct { Operand result, op1, op2; } binop;
+		struct { Operand result, op1; } sinop;
+		struct { Operand op1, op2, label; char op_type[20]; } ifcode;
+		struct { Operand label; } gotocode;//GOTO label
+		struct { Operand label; } labelcode;//LABEL label
+		struct { Operand r; } returncode;
+		struct { Operand rd; } read;
+		struct { Operand wr; } write;
+		struct { Operand argument; } arg;
+		struct { Operand left, function; } call;
+		struct { Operand space; int size; } dec;
+		struct { char func[20]; } function;
+		struct { Operand op; } param;
+		//其他
+	} u;
+} ;
+
+struct InterCodes {
+	struct InterCode code; 
+	struct InterCodes *prev, *next; 
+};
