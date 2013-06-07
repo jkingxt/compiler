@@ -1,4 +1,4 @@
-int main(int a[3])
+int main(int a)
 {
 int n;
 n = read();

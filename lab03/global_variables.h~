@@ -1,0 +1,11 @@
+#ifndef __GLOBAL_VARIABLES__
+#define __GLOBAL_VARIABLES__
+
+
+extern FILE* yyin;
+extern int tag;
+extern int flag;
+extern struct TreeNode *treeRoot;
+
+
+#endif

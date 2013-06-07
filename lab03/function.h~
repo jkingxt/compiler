@@ -1,0 +1,18 @@
+#ifndef __FUNCTION__
+#define __FUNCTION__
+
+
+int compFieldList(FieldList a, FieldList b);
+int compType(Type a, Type b);
+void addItem(FieldList newItem);
+int lookupTable(char *name,FieldList *t,int way);
+void visit (struct TreeNode * node, int op);
+void CheckTree(struct TreeNode *treeRoot);
+
+
+
+
+
+
+
+#endif
